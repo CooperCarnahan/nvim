@@ -1,3 +1,5 @@
+local gutentag_status = require("plugins.gutentags").status()
+
 return {
   "nvim-lualine/lualine.nvim",
   event = "VeryLazy",
@@ -61,6 +63,11 @@ return {
               modified = icons.git.modified,
               removed = icons.git.removed,
             },
+          },
+          {
+            function()
+              return gutentag_status()
+            end,
           },
         },
         lualine_y = {

@@ -11,5 +11,3 @@ vim.keymap.set("n", "L", "$")
 
 vim.keymap.set("n", "<leader>wh", "<cmd>split<cr>")
 vim.keymap.set("n", "<leader>wv", "<cmd>vsplit<cr>")
-
-vim.keymap.set("n", "<C-p>", "<cmd>Telescope find_files<cr>")
