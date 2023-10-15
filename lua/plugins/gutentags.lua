@@ -81,6 +81,7 @@ function M.config()
   vim.g.gutentags_modules = true
   vim.cmd([[command! -nargs=0 GutentagsClearCache call system('rm ' . g:gutentags_cache_dir . '/*')]])
   vim.g.gutentags_ctags_extra_args = { "--tag-relative=yes", "--fields=+ailmnS" }
+  vim.g.gutentags_exclude_project_root = { "/usr/local/", vim.fn.expand("$HOME") }
 
   vim.g.gutentags_modules = { "ctags" }
 end
