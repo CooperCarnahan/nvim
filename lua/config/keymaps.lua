@@ -11,3 +11,6 @@ vim.keymap.set("n", "L", "$")
 
 vim.keymap.set("n", "<leader>wh", "<cmd>split<cr>")
 vim.keymap.set("n", "<leader>wv", "<cmd>vsplit<cr>")
+
+vim.keymap.set("n", "<leader><tab>n", "<cmd>tabn<cr>", { desc = "Next Tab" })
+vim.keymap.set("n", "<leader><tab>p", "<cmd>tabp<cr>", { desc = "Previous Tab" })
