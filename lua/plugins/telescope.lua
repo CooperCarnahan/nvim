@@ -6,7 +6,7 @@ return {
   keys = {
     { "<C-p>", "<cmd>Telescope find_files<cr>", desc = "Find files" },
     { "<leader>st", "<cmd>Telescope tags<cr>", desc = "Find tags" },
-    { "<leader>sz", "<cmd> Telescope zoxide<cr>", desc = "Telescope Zoxide" },
+    { "<leader>sz", "<cmd>Telescope zoxide list<cr>", desc = "Telescope Zoxide" },
   },
   opts = {
     pickers = {
@@ -15,7 +15,18 @@ return {
       },
     },
     extensions = {
-      zoxide = {},
+      zoxide = {
+        mappings = {
+          ["<C-t>"] = {
+            action = function(selection)
+              vim.cmd.tcd(selection.path)
+            end,
+            after_action = function(selection)
+              print("Tab directory changed to " .. selection.path)
+            end,
+          },
+        },
+      },
     },
   },
 }
