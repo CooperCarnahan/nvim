@@ -8,7 +8,7 @@ return {
         keymaps = {
           init_selection = "<enter>", -- set to `false` to disable one of the mappings
           node_incremental = "<enter>",
-          scope_incremental = "grc",
+          scope_incremental = "<tab>",
           node_decremental = "<backspace>",
         },
       },
