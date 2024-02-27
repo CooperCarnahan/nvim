@@ -114,7 +114,24 @@ return {
     local next_hunk_repeat, prev_hunk_repeat = ts_repeat_move.make_repeatable_move_pair(gs.next_hunk, gs.prev_hunk)
     -- Or, use `make_repeatable_move` or `set_last_move` functions for more control. See the code for instructions.
 
-    vim.keymap.set({ "n", "x", "o" }, "]h", next_hunk_repeat)
     vim.keymap.set({ "n", "x", "o" }, "[h", prev_hunk_repeat)
+    vim.keymap.set({ "n", "x", "o" }, "]h", next_hunk_repeat)
+
+    -- make sure forward function comes first
+    local quickfix_next, quickfix_prev = ts_repeat_move.make_repeatable_move_pair(function(_)
+      local status, err = pcall(vim.cmd, "cnext")
+      if not status then
+        vim.notify("No more items", vim.log.levels.INFO)
+      end
+    end, function(_)
+      local status, err = pcall(vim.cmd, "cprevious")
+      if not status then
+        vim.notify("No more items", vim.log.levels.INFO)
+      end
+    end)
+    -- Or, use `make_repeatable_move` or `set_last_move` functions for more control. See the code for instructions.
+
+    vim.keymap.set({ "n", "x", "o" }, "[q", quickfix_prev)
+    vim.keymap.set({ "n", "x", "o" }, "]q", quickfix_next)
   end,
 }
