@@ -1,8 +1,10 @@
 local ts_repeat_move = require("nvim-treesitter.textobjects.repeatable_move")
 
 -- make gitsigns.nvim movement repeatable with ; and , keys.
-local next_hunk_repeat, prev_hunk_repeat =
-  ts_repeat_move.make_repeatable_move_pair(require("gitsigns").next_hunk, require("gitsigns").prev_hunk)
+local next_hunk_repeat, prev_hunk_repeat = ts_repeat_move.make_repeatable_move_pair(
+  require("mini.diff").goto_hunk("next"),
+  require("mini.diff").goto_hunk("prev")
+)
 
 -- make quickfix movement repeatable with ; and , keys.
 local quickfix_next, quickfix_prev = ts_repeat_move.make_repeatable_move_pair(function(_)
