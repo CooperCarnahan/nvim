@@ -26,17 +26,11 @@ return {
     { ";", ts_repeat_move.repeat_last_move_next, "Repeat Last Move (Next)" },
     { ",", ts_repeat_move.repeat_last_move_previous, "Repeat Last Move (Prev)" },
 
-    -- make builtin f, F, t, T also repeatable with ; and ,
-    { "f", ts_repeat_move.builtin_f },
-    { "F", ts_repeat_move.builtin_F },
-    { "t", ts_repeat_move.builtin_t },
-    { "T", ts_repeat_move.builtin_T },
-
     { "]h", next_hunk_repeat, "Next hunk" },
     { "[h", prev_hunk_repeat, "Prev Hunk" },
 
-    { "]q", quickfix_prev, "Quickfix Previous" },
-    { "[q", quickfix_next, "Quickfix Next" },
+    { "[q", quickfix_prev, "Quickfix Previous" },
+    { "]q", quickfix_next, "Quickfix Next" },
   },
   opts = {
     incremental_selection = {
