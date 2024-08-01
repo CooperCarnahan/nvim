@@ -1,22 +1,22 @@
 return {
   "stevearc/overseer.nvim",
-  config = function()
-    local overseer = require("overseer")
-    overseer.setup()
-
-    -- open quickfix upon running command
-    local hook = function(task_defn, util)
-      util.add_component(task_defn, { "on_output_quickfix", open = true })
-    end
-
-    local opts = { module = "cargo" }
-    overseer.add_template_hook(opts, hook)
-
-    opts = { module = "vscode" }
-    overseer.add_template_hook(opts, hook)
-  end,
-  keys = {
-    { "<leader>oo", "<cmd>OverseerToggle<cr>", { desc = "OverseerRun" } },
-    { "<leader>or", "<cmd>OverseerRun<cr>", { desc = "OverseerRun" } },
+  opts = {
+    component_aliases = {
+      -- Most tasks are initialized with the default components
+      default = {
+        { "display_duration", detail_level = 2 },
+        "on_output_summarize",
+        "on_exit_set_status",
+        "on_complete_notify",
+        { "on_result_diagnostics_quickfix", set_empty_results = true },
+        { "on_result_diagnostics_trouble", close = true },
+        { "on_complete_dispose", require_view = { "SUCCESS", "FAILURE" } },
+      },
+      -- Tasks from tasks.json use these components
+      default_vscode = {
+        "default",
+        "on_result_diagnostics",
+      },
+    },
   },
 }
