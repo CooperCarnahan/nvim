@@ -35,7 +35,7 @@ return {
       desc = "Open harpoon window",
     },
     {
-      "<leader>hl",
+      "<leader>hh",
       function()
         local harpoon = require("harpoon")
         harpoon.ui:toggle_quick_menu(harpoon:list())
