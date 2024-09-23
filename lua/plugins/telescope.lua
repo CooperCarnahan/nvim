@@ -8,7 +8,7 @@ return {
     { "<C-p>", "<cmd>Telescope find_files<cr>", desc = "Find files" },
     { "<leader>st", "<cmd>Telescope tags<cr>", desc = "Find tags" },
     { "<leader>sz", "<cmd>Telescope zoxide list<cr>", desc = "Telescope Zoxide" },
-    { "<leader>sf", "<cmd>Telescope frecency workspace=CWD<cr>", desc = "Find 'frecent' files" },
+    { "<leader>sf", "<cmd>Telescope frecency<cr>", desc = "Find 'frecent' files" },
   },
   opts = {
     pickers = {
@@ -30,7 +30,7 @@ return {
         },
       },
       frecency = {
-        workspace = "CWD",
+        default_workspace = "CWD",
       },
     },
   },
