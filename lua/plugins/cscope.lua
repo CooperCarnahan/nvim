@@ -1,5 +1,6 @@
 return {
   "dhananjaylatkar/cscope_maps.nvim",
+  commit = "a4e8cf0a48b14696c32ea99edb1bf5d28e2b8384",
   event = "VeryLazy",
   dependencies = {
     "nvim-telescope/telescope.nvim", -- optional [for picker="telescope"]
