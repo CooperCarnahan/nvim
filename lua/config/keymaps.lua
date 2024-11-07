@@ -6,8 +6,8 @@
 vim.keymap.set("i", "jk", "<Esc>")
 
 -- Edit movement keys
-vim.keymap.set("n", "H", "^")
-vim.keymap.set("n", "L", "$")
+vim.keymap.set({ "n", "v" }, "H", "^")
+vim.keymap.set({ "n", "v" }, "L", "$")
 
 vim.keymap.set("n", "<leader>wh", "<cmd>split<cr>")
 vim.keymap.set("n", "<leader>wv", "<cmd>vsplit<cr>")
