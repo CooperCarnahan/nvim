@@ -1,8 +1,11 @@
 local ts_repeat_move = require("nvim-treesitter.textobjects.repeatable_move")
 
 -- make gitsigns.nvim movement repeatable with ; and , keys.
-local next_hunk_repeat, prev_hunk_repeat =
-  ts_repeat_move.make_repeatable_move_pair(require("gitsigns").next_hunk, require("gitsigns").prev_hunk)
+local next_hunk_repeat, prev_hunk_repeat = ts_repeat_move.make_repeatable_move_pair(function(_)
+  require("gitsigns").next_hunk()
+end, function(_)
+  require("gitsigns").prev_hunk()
+end)
 
 -- make quickfix movement repeatable with ; and , keys.
 local quickfix_next, quickfix_prev = ts_repeat_move.make_repeatable_move_pair(function(_)
@@ -23,14 +26,14 @@ return {
 
     -- Repeat movement with ; and ,
     -- ensure ; goes forward and , goes backward regardless of the last direction
-    { ";", ts_repeat_move.repeat_last_move_next, "Repeat Last Move (Next)" },
-    { ",", ts_repeat_move.repeat_last_move_previous, "Repeat Last Move (Prev)" },
+    { mode = { "n", "v" }, ";", ts_repeat_move.repeat_last_move_next, "Repeat Last Move (Next)" },
+    { mode = { "n", "v" }, ",", ts_repeat_move.repeat_last_move_previous, "Repeat Last Move (Prev)" },
 
-    { "]h", next_hunk_repeat, "Next hunk" },
-    { "[h", prev_hunk_repeat, "Prev Hunk" },
+    { mode = { "n", "v" }, "]h", next_hunk_repeat, "Next hunk" },
+    { mode = { "n", "v" }, "[h", prev_hunk_repeat, "Prev Hunk" },
 
-    { "[q", quickfix_prev, "Quickfix Previous" },
-    { "]q", quickfix_next, "Quickfix Next" },
+    { mode = { "n", "v" }, "[q", quickfix_prev, "Quickfix Previous" },
+    { mode = { "n", "v" }, "]q", quickfix_next, "Quickfix Next" },
   },
   opts = {
     incremental_selection = {
