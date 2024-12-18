@@ -5,7 +5,6 @@ return {
     "nvim-telescope/telescope-frecency.nvim",
   },
   keys = {
-    { "<C-p>", "<cmd>Telescope find_files<cr>", desc = "Find files" },
     { "<leader>st", "<cmd>Telescope tags<cr>", desc = "Find tags" },
     { "<leader>sz", "<cmd>Telescope zoxide list<cr>", desc = "Telescope Zoxide" },
     { "<leader>sf", "<cmd>Telescope frecency<cr>", desc = "Find 'frecent' files" },
