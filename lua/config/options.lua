@@ -9,5 +9,3 @@ vim.cmd("abb u32 UINT32")
 if vim.g.neovide then
   vim.o.guifont = "CaskaydiaCove Nerd Font:h14"
 end
-
-vim.g.autoformat = false
