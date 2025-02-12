@@ -18,3 +18,6 @@ vim.keymap.set("n", "<leader><tab>p", "<cmd>tabp<cr>", { desc = "Previous Tab" }
 -- Commandline mode
 vim.keymap.set("c", "<c-a>", "<Home>")
 vim.keymap.set("c", "<c-e>", "<End>")
+
+vim.keymap.set("n", "<leader>ghq" ,"<cmd>Gitsigns setqflist<cr>")
+vim.keymap.set('n', '<leader>ghQ', function() require("gitsigns").setqflist('all') end)
