@@ -1,5 +1,8 @@
 return {
   "neovim/nvim-lspconfig",
+  dependencies = {
+    "netmute/ctags-lsp.nvim",
+  },
   opts = {
     servers = {
       -- Ensure mason installs the server
@@ -18,7 +21,7 @@ return {
             "build.ninja"
           )(fname) or require("lspconfig.util").root_pattern("compile_commands.json", "compile_flags.txt")(
             fname
-          ) or require("lspconfig.util").find_git_ancestor(fname)
+          ) or vim.fs.dirname(vim.fs.find(".git", { path = fname, upward = true })[1])
         end,
         capabilities = {
           offsetEncoding = { "utf-16" },
@@ -37,6 +40,10 @@ return {
           completeUnimported = true,
           clangdFileStatus = true,
         },
+      },
+      ctags_lsp = {
+        filetypes = { "c", "cpp" },
+        root_dir = "", -- there's currently a bug on windows if we pass it a root dir, so we let the server figure it out instead
       },
     },
     setup = {
