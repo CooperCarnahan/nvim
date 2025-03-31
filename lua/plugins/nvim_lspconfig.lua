@@ -4,6 +4,10 @@ return {
     "netmute/ctags-lsp.nvim",
   },
   opts = {
+    diagnostics = {
+      virtual_text = false,
+      virtual_lines = true,
+    },
     servers = {
       -- Ensure mason installs the server
       clangd = {
