@@ -44,6 +44,17 @@ return {
       ctags_lsp = {
         filetypes = { "c", "cpp" },
         root_dir = "", -- there's currently a bug on windows if we pass it a root dir, so we let the server figure it out instead
+        on_attach = function(client, bufnr)
+          -- Use lspconfig.util to check for compile_commands.json
+          local fname = vim.api.nvim_buf_get_name(bufnr)
+          local compile_commands_root = require("lspconfig.util").root_pattern("compile_commands.json")(fname)
+
+          -- If compile_commands.json is found, stop ctags_lsp
+          if compile_commands_root then
+            client.stop() -- Stop the ctags_lsp client
+            return false -- Prevent further attachment
+          end
+        end,
       },
     },
     setup = {
